@@ -1,0 +1,20 @@
+apiVersion: v1  
+kind: Deployment #ressource definition
+metadata:
+  name: comingsoon-page-img-deployment 
+  namespace: comingsoon
+spec: #1 state of the pod
+  selector:
+    matchLabels:
+      app: comingsoon-page
+  replicas: 4 #number of pods thiscontainer can do 
+  template:
+    metadata:
+      labels:
+        app: comingsoon-page
+    spec: #2 state of container inside the pod
+      containers: #we can define more than a container with a copy/paste
+      - name: comingsoon-page
+        image: wiameelyakini/coming-soon:latest #from your dockerhub
+        ports:
+        - containerPort: 80
